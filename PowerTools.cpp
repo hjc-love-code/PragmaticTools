@@ -3,7 +3,7 @@
 using namespace std;
 string input;
 int main() {
-    cout << "PowerTools For Windows 1.0.0 started......" << endl;
+    cout << "PowerTools 1.0.0 for Windows started......" << endl;
     cout << "You can enter \"help\" for helps" << endl;
     while (true) {
         cout << ">>> ";
