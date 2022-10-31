@@ -9,7 +9,7 @@
 				"-fdiagnostics-color=always",
 				"-g",
 				"${workspaceFolder}\\*.cpp",
-				"${workspaceFolder}\\PowerTools_Data\\Modules\\*.cpp",
+				"${workspaceFolder}\\PragmaticTools_Data\\Modules\\*.cpp",
 				"-o",
 				"${fileDirname}\\${fileBasenameNoExtension}.exe"
 			],
