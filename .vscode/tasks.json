@@ -10,6 +10,7 @@
 				"-g",
 				"${workspaceFolder}\\*.cpp",
 				"${workspaceFolder}\\PragmaticTools_Data\\Modules\\*.cpp",
+				"${workspaceFolder}\\Setup\\*.cpp",
 				"-o",
 				"${fileDirname}\\${fileBasenameNoExtension}.exe"
 			],
