@@ -1,0 +1,1 @@
+this folder is using to save 7Z.exe and 7Z.dll, because of gitignore, so they cannot send correctly on github, so I made a zip file to save them.
