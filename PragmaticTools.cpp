@@ -45,9 +45,6 @@ int main() {
         else if(input == "help") {
             helps();
         }
-        else if(input == "1") {
-            system("7z a D:/test.zip D:/PaintBoard/**");
-        }
         else {
             cout << "No such command name \"" << input << "\"";
         }

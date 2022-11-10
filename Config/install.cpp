@@ -21,7 +21,7 @@ bool IsProcessRunAsAdmin()
 }
 
 void FirstZipUsing() {
-    string namepath = "Setup\\zip_installed.txt";
+    string namepath = "Config\\zip_installed.txt";
     ifstream f(namepath);
     if( f.good() ) {
         cout << "7Z installed." << endl;

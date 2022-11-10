@@ -1,4 +1,5 @@
-#include <bits/stdc++.h>
+#include <iostream>
+#include <ctime>
 #include"import.h"
 #include <sys/types.h>
 #include <sys/stat.h>
