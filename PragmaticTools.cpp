@@ -2,7 +2,7 @@
 #include"PragmaticTools_Data\Modules\import.h"
 #include<sys/stat.h>
 using namespace std;
-string input;
+string nowPath = "C:\\Users\\Juncheng Hu.JONATHAN";
 int main() {
     bool IsProcessRunAsAdmin();
     bool isAdmin = IsProcessRunAsAdmin();
@@ -14,16 +14,11 @@ int main() {
     }
     FirstZipUsing();
     cout << "PragmaticTools 1.0.0 for Windows started......" << endl;
-    cout << "You can enter \"help\" for helps" << endl;
+    cout << "You can enter \"help\" for helps" << endl << endl;
     while (true) {
-        cout << ">>> ";
-        cin >> input;
-        // change char into small letter
-        for (int i = 0; i < input.size(); i++) {
-            if (input[i] >= 65 && input[i] <= 90) {
-                input[i] = input[i] + 32;
-            }
-        }
+        cout << nowPath << "> ";
+        string input;
+        std::getline(cin, input);
         // check features
         if (input == "moveapps") {
             // Input
@@ -45,10 +40,16 @@ int main() {
         else if(input == "help") {
             helps();
         }
-        else {
-            cout << "No such command name \"" << input << "\"";
+        else if(input[0] == 'c' && input[1] == 'd') {
+            input = input.erase(0,3); 
+            input = correctSpell(input);
+            nowPath = input;
         }
-        cout << endl << endl;
+        else {
+            const char * c_input = input.c_str();
+            system(c_input);
+        }
+        cout << endl;
     }
 }
 

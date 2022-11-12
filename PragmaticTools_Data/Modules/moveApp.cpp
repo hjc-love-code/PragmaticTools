@@ -47,7 +47,7 @@ string correctSpell(string location) {
         }
     }
     if (location[location.size() - 1] == '\\') {
-        location[location.size() - 1] = ' ';
+        location[location.size() - 1] = '\0';
     }
     return location;
 }
