@@ -1,8 +1,7 @@
 #include<bits/stdc++.h>
 #include<windows.h>
 using namespace std;
-bool IsProcessRunAsAdmin()
-{
+bool IsProcessRunAsAdmin() {// check if it run in admin! code from baidu.com
     SID_IDENTIFIER_AUTHORITY NtAuthority = SECURITY_NT_AUTHORITY;
     PSID AdministratorsGroup;
     BOOL b = AllocateAndInitializeSid(
@@ -20,7 +19,7 @@ bool IsProcessRunAsAdmin()
     return b == TRUE;
 }
 
-void FirstZipUsing() {
+void FirstZipUsing() { // install the 7z to system32
     string namepath = "Config\\zip_installed.txt";
     ifstream f(namepath);
     if( f.good() ) {

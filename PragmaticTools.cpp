@@ -2,26 +2,31 @@
 #include"PragmaticTools_Data\Modules\import.h"
 #include<sys/stat.h>
 using namespace std;
-string nowPath = "C:\\Users\\Juncheng Hu.JONATHAN";
+//startup
+bool IsProcessRunAsAdmin();
+bool isAdmin = IsProcessRunAsAdmin();
+void FirstZipUsing();
+//deafultPath
+string cdPath = "C:\\Users\\Juncheng Hu.JONATHAN";
 int main() {
-    bool IsProcessRunAsAdmin();
-    bool isAdmin = IsProcessRunAsAdmin();
-    void FirstZipUsing();
+    // if the app is run in admin
     if (isAdmin != true) {
         cout << "Please run app as admin!";
         cin.get();
         return 0;
     }
+    // install zip / check zip
     FirstZipUsing();
+    // main process
     cout << "PragmaticTools 1.0.0 for Windows started......" << endl;
     cout << "You can enter \"help\" for helps" << endl << endl;
     while (true) {
-        cout << nowPath << "> ";
+        cout << cdPath << "> ";
         string input;
         std::getline(cin, input);
         // check features
-        if (input == "moveapps") {
-            // Input
+        if (input == "moveapps") { // moveapps
+            // getpath
             string Vfrom, Vto, isSafe;
             cout << "folder location you want to change: ";
             cin >> Vfrom;
@@ -29,23 +34,26 @@ int main() {
             cin >> Vto;
             cout << "safe mode?(takes up a small amount of disk space(Y/N): ";
             cin >> isSafe;
-            // Calculate
-            Vfrom = correctSpell(Vfrom);
-            Vto = correctSpell(Vto);
+            // calculate
+            Vfrom = correctSpell(joinPath(Vfrom, cdPath), "system");
+            Vto = correctSpell(joinPath(Vto, cdPath), "system");
             if (isSafe == "y" || isSafe == "Y") {
                 writeJournal(Vfrom);
             }
             string ret = MoveFolder(Vfrom, Vto);
         }
-        else if(input == "help") {
+        else if(input[0] == 'c' && input[1] == 'd') { // cd command(can't work by code "system")
+            input = input.erase(0,3); 
+            input = correctSpell(input, "path");
+            string ret = isFolder(input);
+            if (ret == "ok") {
+                cdPath = input;
+            }
+        }
+        else if(input == "help") { // cmd helps and Pragmatictools helps
             helps();
         }
-        else if(input[0] == 'c' && input[1] == 'd') {
-            input = input.erase(0,3); 
-            input = correctSpell(input);
-            nowPath = input;
-        }
-        else {
+        else { // maybe the enter is an cmd command
             const char * c_input = input.c_str();
             system(c_input);
         }
