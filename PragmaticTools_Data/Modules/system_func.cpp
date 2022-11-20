@@ -35,7 +35,7 @@ string joinPath(string path, string nowPath) {// to rerecognise the path is the 
     }
 } 
 
-string isFolder(string path) {
+string isFolder(string path) {// a func  to check if the path is point to a folder
     struct stat info;
     // check the folder
     if (stat(path.c_str(), &info) != 0) {

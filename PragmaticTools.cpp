@@ -1,6 +1,5 @@
-#include<bits/stdc++.h>
+#include<iostream>
 #include"PragmaticTools_Data\Modules\import.h"
-#include<sys/stat.h>
 using namespace std;
 //startup
 bool IsProcessRunAsAdmin();
@@ -21,11 +20,24 @@ int main() {
     cout << "PragmaticTools 1.0.0 for Windows started......" << endl;
     cout << "You can enter \"help\" for helps" << endl << endl;
     while (true) {
-        cout << cdPath << "> ";
+        cout << cdPath << ">";
         string input;
         std::getline(cin, input);
         // check features
-        if (input == "moveapps") { // moveapps
+        if(input[0] == 'c' && input[1] == 'd') { // cd command(can't work by code "system")
+            input = input.erase(0,3); 
+            input = correctSpell(input, "path");
+            string ret = isFolder(input);
+            if (ret == "ok") {
+                cdPath = input;
+            }
+            continue;
+        }
+        else if(input == "help" || input == "HELP") { // cmd helps and Pragmatictools helps
+            helps();
+            continue;
+        }
+        else if (input == "moveapps" || input == "moveApps") { // moveapps
             // getpath
             string Vfrom, Vto, isSafe;
             cout << "folder location you want to change: ";
@@ -41,23 +53,30 @@ int main() {
                 writeJournal(Vfrom);
             }
             string ret = MoveFolder(Vfrom, Vto);
+            continue;
         }
-        else if(input[0] == 'c' && input[1] == 'd') { // cd command(can't work by code "system")
-            input = input.erase(0,3); 
-            input = correctSpell(input, "path");
-            string ret = isFolder(input);
-            if (ret == "ok") {
-                cdPath = input;
-            }
+        else if(input == "hideFolder" || input == "hidefolder") {
+            string Vfrom;
+            cout << "folder location you want to hide: ";
+            cin >> Vfrom;
+            hideFolder(Vfrom, cdPath, "hide");
+            cout << "finish!";
+            continue;
         }
-        else if(input == "help") { // cmd helps and Pragmatictools helps
-            helps();
+        else if(input == "showFolder" || input == "showfolder") {
+            string Vfrom;
+            cout << "folder location you want to show: ";
+            cin >> Vfrom;
+            hideFolder(Vfrom, cdPath, "show");
+            cout << "finish!";
+            continue;
         }
         else { // maybe the enter is an cmd command
             const char * c_input = input.c_str();
             system(c_input);
+            continue;
         }
-        cout << endl;
+        cout << endl << endl;
     }
 }
 
