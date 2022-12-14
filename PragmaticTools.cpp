@@ -1,19 +1,13 @@
 #include<iostream>
 #include"PragmaticTools_Data\Modules\import.h"
+#include<string>
 using namespace std;
 //startup
-bool IsProcessRunAsAdmin();
-bool isAdmin = IsProcessRunAsAdmin();
 void FirstZipUsing();
 //deafultPath
-string cdPath = "C:\\Users\\Juncheng Hu.JONATHAN";
+string cdPath = "C:\\Users\\hjc-love-code";
 int main() {
     // if the app is run in admin
-    if (isAdmin != true) {
-        cout << "Please run app as admin!";
-        cin.get();
-        return 0;
-    }
     // install zip / check zip
     FirstZipUsing();
     // main process
@@ -22,7 +16,7 @@ int main() {
     while (true) {
         cout << cdPath << ">";
         string input;
-        std::getline(cin, input);
+        getline(cin, input);
         // check features
         if(input[0] == 'c' && input[1] == 'd') { // cd command(can't work by code "system")
             input = input.erase(0,3); 

@@ -3,6 +3,8 @@
 #include"import.h"
 #include <sys/types.h>
 #include <sys/stat.h>
+#include <string>
+
 
 string MoveFolder(string choiceLocation, string moveLocation) { // function to move folder to another place
     string file_name = choiceLocation;

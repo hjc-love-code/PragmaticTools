@@ -1,5 +1,5 @@
 #include<string>
-#include "import.h"
+#include"import.h"
 using namespace std;
 void hideFolder(string location, string nowPath, string mode) {// use cmd attrib to hide folder
     location = correctSpell(location, "system");
@@ -21,12 +21,4 @@ void hideFolder(string location, string nowPath, string mode) {// use cmd attrib
             system(c_showExplorer);
         }
     }
-}
-
-string lockFolder() {//move file to other location and create exe file to open file
-
-}
-
-string openFolder() {//open the folder lock by pragmaticTools
-//
 }
